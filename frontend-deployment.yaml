@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-frontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: my-app
+      tier: frontend
+  replicas: 2
+  # refers to the pod
+  template:
+    metadata:
+      labels:
+        app: my-app
+        tier: frontend
+    spec:
+      containers:
+        - name: my-app-frontend
+          image: elvis089/my-app
+          imagePullPolicy: "Always"
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1024Mi"
+          ports:
+            - containerPort: 3000
