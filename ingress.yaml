@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: testapp-ingress
   annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+    kubernetes.io/ingress.class: traefik
     ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
